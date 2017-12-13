@@ -49,15 +49,17 @@ class MainView : View("帮移动擦屁股") {
                 }
             }
             button("export") {
-                status.map {
-                    val stat = when (it.value.value) {
-                        null -> "--"
-                        true -> "OK"
-                        false -> "NG"
+                action {
+                    status.map {
+                        val stat = when (it.value.value) {
+                            null -> "--"
+                            true -> "OK"
+                            false -> "NG"
+                        }
+                        "${it.key} -> $stat"
+                    }.let {
+                        File("${serial.value}.txt").writeText(it.joinToString(separator = "\n"))
                     }
-                    "${it.key} -> $stat"
-                }.let {
-                    File("${serial.value}.txt").writeText(it.joinToString(separator = "\n"))
                 }
             }
             button("reconnect") { }
