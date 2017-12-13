@@ -25,7 +25,7 @@ class MainView : View("帮移动擦屁股") {
     override val root = vbox(spacing = 20, alignment = Pos.CENTER) {
         paddingAll = 20
         val toggleGroup = ToggleGroup()
-        hbox(spacing = 10) {
+        hbox(spacing = 10, alignment = Pos.CENTER) {
             status.filter { it.key % 2 == 0 }.forEach { (index, property) ->
                 portRadioButton(toggleGroup, index, property)
             }
@@ -34,7 +34,7 @@ class MainView : View("帮移动擦屁股") {
             label("SN")
             textfield { bind(serial) }
         }
-        hbox(spacing = 10) {
+        hbox(spacing = 10, alignment = Pos.CENTER) {
             status.filter { it.key % 2 != 0 }.forEach { (index, property) ->
                 portRadioButton(toggleGroup, index, property)
             }
